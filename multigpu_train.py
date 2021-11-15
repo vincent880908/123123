@@ -6,7 +6,7 @@ from tensorflow.contrib import slim
 tf.app.flags.DEFINE_integer('input_size', 512, '')
 tf.app.flags.DEFINE_integer('batch_size_per_gpu', 24, '')
 tf.app.flags.DEFINE_integer('num_readers', 16, '')
-tf.app.flags.DEFINE_float('learning_rate', 0.0005, '')
+tf.app.flags.DEFINE_float('learning_rate', 0.3, '')
 tf.app.flags.DEFINE_integer('max_steps', 100000, '')
 tf.app.flags.DEFINE_float('moving_average_decay', 0.997, '')
 tf.app.flags.DEFINE_string('gpu_list', '1', '')
