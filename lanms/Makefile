@@ -1,4 +1,4 @@
-CXXFLAGS = -I include  -std=c++11 -O3 $(shell python3.7-config --cflags)
+CXXFLAGS = -I include  -std=c++11 -O3 -I/usr/include/python3.7m   #$(shell python3.7-config --cflags)
 LDFLAGS = $(shell python3.7-config --ldflags)
 
 DEPS = lanms.h $(shell find include -xtype f)
