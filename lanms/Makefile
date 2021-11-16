@@ -4,7 +4,7 @@ LDFLAGS = -L/usr/lib/python3.7/config-3.7m-x86_64-linux-gnu -L/usr/lib -lpython3
 DEPS = lanms.h $(shell find include -xtype f)
 CXX_SOURCES = adaptor.cpp include/clipper/clipper.cpp
 
-LIB_SO = 
+LIB_SO = adaptor.so
 
 $(LIB_SO): $(CXX_SOURCES) $(DEPS)
 	$(CXX) -o $@ $(CXXFLAGS) $(LDFLAGS) $(CXX_SOURCES) --shared -fPIC
