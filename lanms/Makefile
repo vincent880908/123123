@@ -4,7 +4,7 @@ LDFLAGS = $(shell python3.6-config --ldflags)
 DEPS = lanms.h $(shell find include -xtype f)
 CXX_SOURCES = adaptor.cpp include/clipper/clipper.cpp
 
-LIB_SO = adaptor.so
+LIB_SO = make
 
 $(LIB_SO): $(CXX_SOURCES) $(DEPS)
 	$(CXX) -o $@ $(CXXFLAGS) $(LDFLAGS) $(CXX_SOURCES) --shared -fPIC
