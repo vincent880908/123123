@@ -149,7 +149,7 @@ def main(argv=None):
                                          batch_size=FLAGS.batch_size_per_gpu * len(gpus))
 
         start = time.time()
-        for step in range(4041,4041+FLAGS.max_steps):
+        for step in range(FLAGS.max_steps):
             data = next(data_generator)
             ml, tl, _ = sess.run([model_loss, total_loss, train_op], feed_dict={input_images: data[0],
                                                                                 input_score_maps: data[2],
