@@ -7,7 +7,7 @@ tf.app.flags.DEFINE_integer('input_size', 512, '')
 tf.app.flags.DEFINE_integer('batch_size_per_gpu', 16, '')
 tf.app.flags.DEFINE_integer('num_readers', 16, '')
 tf.app.flags.DEFINE_float('learning_rate', 0.0005, '')
-tf.app.flags.DEFINE_integer('max_steps', 1000, '')
+tf.app.flags.DEFINE_integer('max_steps', 4000, '')
 tf.app.flags.DEFINE_float('moving_average_decay', 0.997, '')
 tf.app.flags.DEFINE_string('gpu_list', '1', '')
 tf.app.flags.DEFINE_string('checkpoint_path', '/tmp/east_resnet_v1_50_rbox/', '')
@@ -149,7 +149,7 @@ def main(argv=None):
                                          batch_size=FLAGS.batch_size_per_gpu * len(gpus))
 
         start = time.time()
-        for step in range(FLAGS.max_steps):
+        for step in range(4041,4041+FLAGS.max_steps):
             data = next(data_generator)
             ml, tl, _ = sess.run([model_loss, total_loss, train_op], feed_dict={input_images: data[0],
                                                                                 input_score_maps: data[2],
