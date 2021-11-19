@@ -4,6 +4,7 @@ import math
 import os
 import numpy as np
 import tensorflow as tf
+import matplotlib.pylab as plt
 
 import locality_aware_nms as nms_locality
 import lanms
@@ -187,10 +188,9 @@ def main(argv=None):
                             f.write('{},{},{},{},{},{},{},{}\r\n'.format(
                                 box[0, 0], box[0, 1], box[1, 0], box[1, 1], box[2, 0], box[2, 1], box[3, 0], box[3, 1],
                             ))
-                            print(boxes)
-                            print("\n")
-                            print(box)
+                            crop_img = im[box[0,1] if box[1,1]>box[0,1] else box[1,1] : box[2,1] if box[2,1]>box[3,1] else box[3,1] , box[3,0] if box[0,0]>box[3,0] else box[0,0] : box[1,0] if box[1,0]>box[2,0] else box[2,0]]
                             cv2.polylines(im[:, :, ::-1], [box.astype(np.int32).reshape((-1, 1, 2))], True, color=(255, 255, 0), thickness=1)
+                            plt.imshow(crop_img)
                 if not FLAGS.no_write_images:
                     img_path = os.path.join(FLAGS.output_dir, os.path.basename(im_fn))
                     cv2.imwrite(img_path, im[:, :, ::-1])
